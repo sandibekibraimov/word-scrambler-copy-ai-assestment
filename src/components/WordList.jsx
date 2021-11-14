@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { handleScramble } from '../utils/scramble';
 import './wordlist.css';
 
@@ -6,7 +6,7 @@ const WordList = ({ sentence }) => {
   const scrambled = handleScramble(sentence);
 
   return (
-    <Fragment>
+    <div className='wordContainer'>
       <h1 className='words'>
         {scrambled.map((word, index) => (
           <span key={index}>{word}</span>
@@ -17,7 +17,7 @@ const WordList = ({ sentence }) => {
       <p> The yellow blocks are meant for spaces</p>
 
       <h1 className='score'>Score: 0</h1>
-    </Fragment>
+    </div>
   );
 };
 
