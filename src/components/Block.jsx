@@ -7,7 +7,7 @@ const Block = ({ word }) => {
   const lettersArr = word.split('');
   lettersArr.push('');
   const size = lettersArr.length;
-  console.log(size);
+
   return (
     <div className='blockContainer'>
       {lettersArr.map((el, index) => (

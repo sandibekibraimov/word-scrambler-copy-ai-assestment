@@ -2,7 +2,7 @@ import React from 'react';
 import { handleScramble } from '../utils/scramble';
 import './wordlist.css';
 
-const WordList = ({ sentence }) => {
+const WordList = ({ sentence, score }) => {
   const scrambled = handleScramble(sentence);
 
   return (
@@ -16,7 +16,7 @@ const WordList = ({ sentence }) => {
       <p>Guess the sentence! Start typing.</p>
       <p> The yellow blocks are meant for spaces</p>
 
-      <h1 className='score'>Score: 0</h1>
+      <h1 className='score'>Score: {score}</h1>
     </div>
   );
 };

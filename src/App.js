@@ -8,6 +8,7 @@ import './App.css';
 const App = () => {
   const [sentence, setSentence] = useState('');
   const [pages, setPages] = useState(1);
+  const [score, setScore] = useState(0);
 
   const fetchData = async () => {
     const response = await axios.get(
@@ -28,8 +29,12 @@ const App = () => {
 
   return (
     <div className='container'>
-      <WordList sentence={sentence} />
-      <Blocks sentence={sentence} nextSentence={nextSentence} />
+      <WordList sentence={sentence} score={score} />
+      <Blocks sentence={sentence} />
+
+      <button className='nextbtn' onClick={() => nextSentence(1)}>
+        Next
+      </button>
     </div>
   );
 };
