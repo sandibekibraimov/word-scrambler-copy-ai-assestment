@@ -10,6 +10,8 @@ const App = () => {
   const [pages, setPages] = useState(1);
   const [score, setScore] = useState(0);
 
+  const sentencesLength = sentence.replace(/[^\w]/g, '').split('').length;
+
   const fetchData = async () => {
     const response = await axios.get(
       `https://api.hatchways.io/assessment/sentences/${pages}`
@@ -24,17 +26,32 @@ const App = () => {
   const nextSentence = (page) => {
     if (page < 11) {
       setPages((prevPage) => prevPage + page);
+      setScore((prevScore) => prevScore + 1);
     }
+  };
+
+  const Modal = () => {
+    return (
+      <div>
+        <h2>You win!</h2>
+      </div>
+    );
   };
 
   return (
     <div className='container'>
-      <WordList sentence={sentence} score={score} />
-      <Blocks sentence={sentence} />
-
-      <button className='nextbtn' onClick={() => nextSentence(1)}>
-        Next
-      </button>
+      {pages < 11 ? (
+        <span>
+          <WordList sentence={sentence} score={score} />
+          <Blocks
+            sentence={sentence}
+            nextSentence={nextSentence}
+            pages={pages}
+          />
+        </span>
+      ) : (
+        <Modal />
+      )}
     </div>
   );
 };

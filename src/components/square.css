@@ -1,8 +1,8 @@
 .squareContainer {
-  /* border: 1px solid blue; */
-  /* flex-grow: 1; */
   width: 100%;
   border: none;
-  margin: 10px;
+  margin: 5px;
   font-size: 2rem;
+  padding: 12px;
+  text-align: center;
 }
