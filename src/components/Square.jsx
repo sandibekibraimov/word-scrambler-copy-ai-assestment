@@ -3,18 +3,6 @@ import './square.css';
 
 const Square = ({ letter, pages }) => {
   const [inputLetter, setInputLetter] = useState();
-  let count = [];
-
-  const handleInput = (e) => {
-    setInputLetter(e.target.value);
-    checkLetter(inputLetter);
-  };
-
-  const checkLetter = (inp) => {
-    if (inp === letter) {
-      count.push(inp);
-    }
-  };
 
   useEffect(() => {
     setInputLetter('');
@@ -34,7 +22,7 @@ const Square = ({ letter, pages }) => {
         }}
         disabled={letter.length === 0}
         value={inputLetter}
-        onChange={handleInput}
+        onChange={(e) => setInputLetter(e.target.value)}
         maxLength='1'
       />
     </Fragment>
