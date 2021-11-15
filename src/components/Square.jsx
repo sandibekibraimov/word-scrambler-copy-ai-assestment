@@ -1,12 +1,23 @@
 import React, { Fragment, useState, useEffect } from 'react';
-
 import './square.css';
 
 const Square = ({ letter, pages }) => {
-  const [inputLet, setInputLet] = useState('');
+  const [inputLetter, setInputLetter] = useState();
+  let count = [];
+
+  const handleInput = (e) => {
+    setInputLetter(e.target.value);
+    checkLetter(inputLetter);
+  };
+
+  const checkLetter = (inp) => {
+    if (inp === letter) {
+      count.push(inp);
+    }
+  };
 
   useEffect(() => {
-    setInputLet('');
+    setInputLetter('');
   }, [pages]);
 
   return (
@@ -15,15 +26,15 @@ const Square = ({ letter, pages }) => {
         className='squareContainer'
         style={{
           background:
-            letter === inputLet && letter.length !== 0
+            letter === inputLetter && letter.length !== 0
               ? '#4caf50'
               : letter.length === 0
               ? '#ffb74d'
               : '#e1e1e1',
         }}
         disabled={letter.length === 0}
-        value={inputLet}
-        onChange={(e) => setInputLet(e.target.value)}
+        value={inputLetter}
+        onChange={handleInput}
         maxLength='1'
       />
     </Fragment>
